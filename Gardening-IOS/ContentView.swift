@@ -1,19 +1,20 @@
-//
-//  ContentView.swift
-//  Gardening-IOS
-//
-//  Created by jatin foujdar on 13/04/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var vegetables = [VegetableModel]()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List(vegetables){ vegetable in
+            Text(vegetable.name)
+        }
+        .listStyle(.plain)
+        .task {
+            do{
+                let client = VegetableHttpClient()
+                vegetables = try await client.fetchVegetable()
+            }catch{
+                print("error")
+            }
         }
         .padding()
     }
