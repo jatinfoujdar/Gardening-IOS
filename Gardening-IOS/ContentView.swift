@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var vegetables = [VegetableModel]()
+    @State private var vegetables: [VegetableModel] = []
+
     
     var body: some View {
         List(vegetables){ vegetable in
-            Text(vegetable.name)
+            VegetableCellView(vegetable: vegetable)
         }
         .listStyle(.plain)
         .task {
