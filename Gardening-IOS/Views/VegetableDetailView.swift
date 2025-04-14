@@ -25,11 +25,7 @@ struct VegetableDetailView: View {
                 .frame(maxWidth: .infinity, maxHeight: 300)
                 .padding(.bottom,8)
                 
-                Text(vegetable.name)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity,alignment: .leading)
+            
                 
                 Text(vegetable.body)
                     .font(.body)
@@ -65,6 +61,7 @@ struct VegetableDetailView: View {
             }
             .padding()
         }
+        .navigationTitle(vegetable.name)
     }
 }
 
@@ -104,5 +101,7 @@ struct SectionHeader: View {
 }
 
 #Preview {
-    VegetableDetailView(vegetable: PreviewData.loadVegetable()[0])
+    NavigationStack{
+        VegetableDetailView(vegetable: PreviewData.loadVegetable()[0])
+    }
 }
