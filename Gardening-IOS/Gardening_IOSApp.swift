@@ -11,7 +11,8 @@ import SwiftUI
 struct Gardening_IOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VegetableTabBarView()
+                .preferredColorScheme(.dark)
         }
     }
 }

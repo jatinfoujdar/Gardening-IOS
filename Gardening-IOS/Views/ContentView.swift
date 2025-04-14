@@ -16,11 +16,12 @@ struct ContentView: View {
             }catch{
                 print("error")
             }
-        }
-        .padding()
+        }.navigationTitle("Vegetables")
+       
     }
 }
 
 #Preview {
     ContentView()
+        .preferredColorScheme(.dark)
 }
