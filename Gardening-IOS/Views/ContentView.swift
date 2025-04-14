@@ -3,25 +3,32 @@ import SwiftUI
 struct ContentView: View {
     @State private var vegetables: [VegetableModel] = []
 
-    
     var body: some View {
-        List(vegetables){ vegetable in
-            VegetableCellView(vegetable: vegetable)
-        }
-        .listStyle(.plain)
+        
+            List(vegetables) { vegetable in
+                NavigationLink {
+                    VegetableDetailView(vegetable: vegetable)
+                } label: {
+                    VegetableCellView(vegetable: vegetable)
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle("Vegetables")
+        
         .task {
-            do{
+            do {
                 let client = VegetableHttpClient()
                 vegetables = try await client.fetchVegetable()
-            }catch{
-                print("error")
+            } catch {
+                print(error.localizedDescription)
             }
-        }.navigationTitle("Vegetables")
-       
+        }
     }
 }
 
 #Preview {
-    ContentView()
-        .preferredColorScheme(.dark)
+    NavigationStack{
+        ContentView()
+            .preferredColorScheme(.dark)
+    }
 }

@@ -50,6 +50,18 @@ struct VegetableDetailView: View {
                 DetailRow(icon: "leaf.arrow.triangle.circlepath", title: "Companions", value: vegetable.goodCompanions)
                 DetailRow(icon: "exclamationmark.triangle", title: "Bad Companions", value: vegetable.badCompanions)
                 DetailRow(icon: "heart.fill", title: "Health Benefits", value: vegetable.healthBenefits.isEmpty ? "N/A" : vegetable.healthBenefits)
+                
+                Divider()
+                
+                SectionHeader(title: "Growing Tips")
+                Text(vegetable.growingDescription)
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                
+                SectionHeader(title: "Harvesting Tips")
+                Text(vegetable.harvestDescription)
+                    .font(.body)
+                    .foregroundStyle(.secondary)
             }
             .padding()
         }
@@ -78,6 +90,16 @@ struct DetailRow: View {
             }
         }
         .padding(.vertical,4)
+    }
+}
+
+struct SectionHeader: View {
+    let title: String
+    var body: some View {
+        Text(title)
+            .font(.headline)
+            .foregroundStyle(.primary)
+            .padding(.top)
     }
 }
 
