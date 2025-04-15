@@ -3,6 +3,9 @@ import SwiftUI
 
 struct VegetableDetailView: View {
     let vegetable : VegetableModel
+    
+    @State private var showSeedOrSeedlingMenu = false
+    
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 16){
@@ -61,6 +64,21 @@ struct VegetableDetailView: View {
             }
             .padding()
         }
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarTrailing){
+                Button{
+                    showSeedOrSeedlingMenu = true
+                }label: {
+                    Image(systemName: "plus")
+                        .font(.title2)
+                        .foregroundStyle(.green)
+                }
+            }
+        })
+        .sheet(isPresented: $showSeedOrSeedlingMenu, content: {
+            
+        })
+        
         .navigationTitle(vegetable.name)
     }
 }
