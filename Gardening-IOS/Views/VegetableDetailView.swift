@@ -1,10 +1,14 @@
-
+import Foundation
 import SwiftUI
+import SwiftData
 
 struct VegetableDetailView: View {
     let vegetable : VegetableModel
     
     @State private var showSeedOrSeedlingMenu = false
+    private func saveVegetableToGarden(with plantOption: PlantOption){
+        
+    }
     
     var body: some View {
         ScrollView{
@@ -76,7 +80,11 @@ struct VegetableDetailView: View {
             }
         })
         .sheet(isPresented: $showSeedOrSeedlingMenu, content: {
-            
+            SeedOrSeedlingView(onSelected: {option in
+                saveVegetableToGarden(with: option)
+            })
+            .presentationDetents([.fraction(0.25)])
+            .background(Color(.systemGray6))
         })
         
         .navigationTitle(vegetable.name)
@@ -122,4 +130,5 @@ struct SectionHeader: View {
     NavigationStack{
         VegetableDetailView(vegetable: PreviewData.loadVegetable()[0])
     }
+    .modelContainer(PreviewContainer)
 }

@@ -43,6 +43,10 @@ struct SeedOrSeedlingView: View {
                 })
             }
         }
+        .padding()
+        .background(Color(.systemGray6))
+        .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
+        .padding()
     }
 }
 
@@ -67,7 +71,7 @@ struct OptionView: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color(.systemGray6))
+            .background(Color.gray.opacity(0.2))
             .cornerRadius(12)
         }
         .buttonStyle(.plain)
