@@ -5,9 +5,18 @@ import SwiftData
 struct VegetableDetailView: View {
     let vegetable : VegetableModel
     
+    @Environment(\.modelContext) private var context
+    
     @State private var showSeedOrSeedlingMenu = false
     private func saveVegetableToGarden(with plantOption: PlantOption){
+        let myGardenVegetable = MyGardenVegetableModel(vegetableModel: vegetable, plantOption: plantOption)
+        context.insert(myGardenVegetable)
         
+        do{
+            try context.save()
+        }catch{
+            print(error.localizedDescription)
+        }
     }
     
     var body: some View {
