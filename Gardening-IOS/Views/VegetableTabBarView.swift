@@ -11,7 +11,7 @@ struct VegetableTabBarView: View {
                     Text("Vegetables")
                 }
             NavigationStack{
-                Text("My Graden Screen")
+                MyGardenView()
             }    .tabItem{
                     Image(systemName: "house")
                     Text("My Garden")
@@ -28,5 +28,6 @@ struct VegetableTabBarView: View {
 
 #Preview {
     VegetableTabBarView()
+        .modelContainer(PreviewContainer)
         .preferredColorScheme(.dark)
 }
