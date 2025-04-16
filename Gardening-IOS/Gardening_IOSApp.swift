@@ -12,6 +12,7 @@ struct Gardening_IOSApp: App {
     var body: some Scene {
         WindowGroup {
             VegetableTabBarView()
+                .modelContainer(for: [VegetableModel.self, MyGardenVegetableModel.self])
                 .preferredColorScheme(.dark)
         }
     }
