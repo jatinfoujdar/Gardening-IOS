@@ -54,13 +54,14 @@ struct MyGardenCellView: View {
                     .font(.headline)
                     .foregroundColor(.primary)
                 
-                Text(myGardenVegetable.vegetableModel.body)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .lineLimit(2) // Limit to 2 lines for cleaner appearance
+                Image(systemName: myGardenVegetable.plantOption.icon)
+                    .foregroundColor(.green)
+                
             }
-    
+            Spacer()
+            
         }
+        .padding()
     }
 }
 

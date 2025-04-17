@@ -6,8 +6,10 @@ struct MyGardenView: View {
     
     var body: some View {
         List(myGardenVegetables){myGardenVegetable in
-            Text(myGardenVegetable.vegetableModel.name)
+            MyGardenCellView(myGardenVegetable: myGardenVegetable)
         }
+        .listStyle(.plain)
+        .navigationTitle("My Garden")
     }
 }
 
