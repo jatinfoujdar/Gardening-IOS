@@ -11,4 +11,9 @@ class MyGardenVegetableModel {
         self.vegetableModel = vegetableModel
         self.plantOption = plantOption
     }
+    
+    var daysToHarvest: Int{
+        plantOption == .seed ? vegetableModel.daysToHarvestSeeds : vegetableModel.daysToHarvestSeedlings
+        
+    }
 }
