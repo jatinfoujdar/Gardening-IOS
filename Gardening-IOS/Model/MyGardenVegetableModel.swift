@@ -7,6 +7,9 @@ class MyGardenVegetableModel {
     var plantOption: PlantOption
     var datePlanted: Date = Date()
     
+    @Relationship(deleteRule: .cascade)
+    var notes: [NoteModel]?
+    
     init(vegetableModel: VegetableModel, plantOption: PlantOption) {
         self.vegetableModel = vegetableModel
         self.plantOption = plantOption
