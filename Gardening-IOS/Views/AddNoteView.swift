@@ -13,6 +13,10 @@ struct AddNoteView: View {
     @State private var noteTitle: String = ""
     @State private var noteBody: String = ""
     
+    private func saveNote(){
+        let note = NoteModel(title: noteTitle, body: noteBody)
+        myGardenVegetable.notes?.append(note)
+    }
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -30,7 +34,7 @@ struct AddNoteView: View {
             
             ToolbarItem(placement: .topBarTrailing){
                 Button("Save"){
-                    
+                    saveNote()
                 }
             }
         }
