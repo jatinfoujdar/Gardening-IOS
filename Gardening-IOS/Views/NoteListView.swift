@@ -14,9 +14,10 @@ struct NoteListView: View {
                     }
                 }
             }.sheet(isPresented: $addNotePresented){
-                AddNoteView(myGardenVegetable: myGardenVegetable)
+                NavigationStack{
+                    AddNoteView(myGardenVegetable: myGardenVegetable)
+                }
             }
-        
     }
 }
 

@@ -16,7 +16,11 @@ struct AddNoteView: View {
     private func saveNote(){
         let note = NoteModel(title: noteTitle, body: noteBody)
         myGardenVegetable.notes?.append(note)
+        context.insert(note)
+        try? context.save()
     }
+    
+    @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -43,4 +47,5 @@ struct AddNoteView: View {
 
 #Preview {
     AddNoteView(myGardenVegetable: MyGardenVegetableModel(vegetableModel: PreviewData.loadVegetable()[0], plantOption: .seed))
+        .modelContainer(PreviewContainer)
 }
